@@ -64,9 +64,7 @@ public class MultiFileRowReader extends AbstractRowReader {
      */
     MultiFileRowReader(HardwoodContextImpl context,
                        FileManager fileManager, FileManager.InitResult initResult) {
-        // Use a neutral multi-file identifier so AbstractRowReader does not
-        // incorrectly attribute all errors to the first file only.
-        super("multiple-files");
+        super(initResult.firstFileState().inputFile().name());
         this.context = context;
         this.fileManager = fileManager;
         this.initResult = initResult;
